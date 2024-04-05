@@ -1,0 +1,15 @@
+{
+  "name": "MenuHandler",
+  "tree": {
+    "$path": "./main.lua",
+    "Impl": {
+      "$className": "Folder",
+      "MenuHandler": {
+        "$path": "./src",
+        "__modules__": {
+          "$path": "./node_modules"
+        }
+      }
+    }
+  }
+}

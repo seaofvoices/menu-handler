@@ -1,0 +1,39 @@
+{
+  "name": "@crosswalk-game/menu-handler",
+  "version": "0.1.0",
+  "description": "A crosswalk client module to handle UI menus using tagged instances",
+  "license": "MIT",
+  "author": "jeparlefrancais <jeparlefrancais21@gmail.com>",
+  "homepage": "https://github.com/seaofvoices/menu-handler#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seaofvoices/menu-handler.git"
+  },
+  "main": "src/init.lua",
+  "scripts": {
+    "build": "sh ./scripts/build.sh",
+    "clean": "rm -rf node_modules build temp",
+    "format": "stylua .",
+    "lint": "sh ./scripts/analyze.sh && selene src",
+    "lint:luau": "sh ./scripts/analyze.sh",
+    "lint:selene": "selene src",
+    "prepare": "npmluau",
+    "style-check": "stylua . --check",
+    "test:roblox": "sh ./scripts/roblox-test.sh",
+    "verify-pack": "yarn pack --dry-run"
+  },
+  "devDependencies": {
+    "@jsdotlua/jest": "^3.6.1-rc.2",
+    "@jsdotlua/jest-globals": "^3.6.1-rc.2",
+    "npmluau": "^0.1.1"
+  },
+  "keywords": [
+    "luau"
+  ],
+  "packageManager": "yarn@4.1.1",
+  "dependencies": {
+    "@seaofvoices/tag-effect": "^0.1.1",
+    "luau-disk": "^0.1.1",
+    "luau-teardown": "^0.1.4"
+  }
+}
