@@ -214,6 +214,49 @@ return function()
         end
     end
 
+function module.closeAllInstances()
+		for _, menu in menuInstances do
+			setMenuState(menu, false)
+		end
+	end
+
+	
+	function module.closeAll()
+		for _, menu in menuExtensions do
+			setMenuState(menu, false)
+		end
+		for _, menu in menuInstances do
+			setMenuState(menu, false)
+		end
+	end
+	
+	function module.closeAllBut(notTo: {string})
+		for _, menu in menuExtensions do
+			if not table.find(notTo, menu.id) then
+				setMenuState(menu, false)
+			end
+		end
+		for _, menu in menuInstances do
+			if not table.find(notTo, menu.id) then
+				setMenuState(menu, false)
+			end
+		end
+	end
+
+	function module.closeAllExtensions()
+		for _, menu in menuExtensions do
+			setMenuState(menu, false)
+		end
+	end
+
+	function module.closeAllExtensionsBut(notTo: {string})
+		for _, menu in menuExtensions do
+			if not table.find(notTo, menu.id) then
+				setMenuState(menu, false)
+			end
+		end
+	end
+
     function module.whileOpened(menuId: string, effect: () -> Teardown): () -> ()
         local menuSpecificEffects = menuEffects[menuId]
         if menuSpecificEffects == nil then
