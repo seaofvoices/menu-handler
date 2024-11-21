@@ -10,6 +10,9 @@
     "url": "git+https://github.com/seaofvoices/menu-handler.git"
   },
   "main": "src/init.lua",
+  "keywords": [
+    "luau"
+  ],
   "scripts": {
     "build": "sh ./scripts/build.sh",
     "clean": "rm -rf node_modules build temp",
@@ -27,13 +30,10 @@
     "@jsdotlua/jest-globals": "^3.6.1-rc.2",
     "npmluau": "^0.1.1"
   },
-  "keywords": [
-    "luau"
-  ],
-  "packageManager": "yarn@4.1.1",
   "dependencies": {
     "@seaofvoices/tag-effect": "^0.1.1",
     "luau-disk": "^0.1.1",
     "luau-teardown": "^0.1.4"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }
