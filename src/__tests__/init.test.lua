@@ -90,3 +90,85 @@ it('toggles a menu (closing case)', function()
 
     expect(screenGui.Enabled).toEqual(false)
 end)
+
+it('closes a menu when opening another menu not compatible', function()
+    local firstMenuId = 'screen'
+    local secondMenuId = 'other-screen'
+
+    local firstScreenGui = Instance.new('ScreenGui')
+    firstScreenGui.Enabled = false
+    createMenuInstanceTag(firstMenuId, firstScreenGui)
+    firstScreenGui.Parent = workspace
+
+    local secondScreenGui = Instance.new('ScreenGui')
+    secondScreenGui.Enabled = false
+    createMenuInstanceTag(secondMenuId, secondScreenGui)
+    secondScreenGui.Parent = workspace
+
+    cleanup = { firstScreenGui, secondScreenGui } :: any
+
+    menuHandler.open(firstMenuId)
+    expect(firstScreenGui.Enabled).toEqual(true)
+
+    menuHandler.open(secondMenuId)
+    expect(secondScreenGui.Enabled).toEqual(true)
+    expect(firstScreenGui.Enabled).toEqual(false)
+end)
+
+it('does not re-open a menu after closing a previously opened menu', function()
+    local firstMenuId = 'screen'
+    local secondMenuId = 'other-screen'
+
+    local firstScreenGui = Instance.new('ScreenGui')
+    firstScreenGui.Enabled = false
+    createMenuInstanceTag(firstMenuId, firstScreenGui)
+    firstScreenGui.Parent = workspace
+
+    local secondScreenGui = Instance.new('ScreenGui')
+    secondScreenGui.Enabled = false
+    createMenuInstanceTag(secondMenuId, secondScreenGui)
+    secondScreenGui.Parent = workspace
+
+    cleanup = { firstScreenGui, secondScreenGui } :: any
+
+    menuHandler.open(firstMenuId)
+    expect(firstScreenGui.Enabled).toEqual(true)
+
+    menuHandler.open(secondMenuId)
+    expect(secondScreenGui.Enabled).toEqual(true)
+    expect(firstScreenGui.Enabled).toEqual(false)
+
+    menuHandler.close(secondMenuId)
+
+    expect(secondScreenGui.Enabled).toEqual(false)
+    expect(firstScreenGui.Enabled).toEqual(false)
+end)
+
+it('re-opens a menu after backing from a previously pushed menu', function()
+    local firstMenuId = 'screen'
+    local secondMenuId = 'other-screen'
+
+    local firstScreenGui = Instance.new('ScreenGui')
+    firstScreenGui.Enabled = false
+    createMenuInstanceTag(firstMenuId, firstScreenGui)
+    firstScreenGui.Parent = workspace
+
+    local secondScreenGui = Instance.new('ScreenGui')
+    secondScreenGui.Enabled = false
+    createMenuInstanceTag(secondMenuId, secondScreenGui)
+    secondScreenGui.Parent = workspace
+
+    cleanup = { firstScreenGui, secondScreenGui } :: any
+
+    menuHandler.open(firstMenuId)
+    expect(firstScreenGui.Enabled).toEqual(true)
+
+    menuHandler.push(secondMenuId)
+    expect(secondScreenGui.Enabled).toEqual(true)
+    expect(firstScreenGui.Enabled).toEqual(false)
+
+    menuHandler.back()
+
+    expect(secondScreenGui.Enabled).toEqual(false)
+    expect(firstScreenGui.Enabled).toEqual(true)
+end)
