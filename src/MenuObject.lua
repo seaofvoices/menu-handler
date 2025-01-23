@@ -1,5 +1,7 @@
 export type MenuObject = GuiObject | LayerCollector | ProximityPrompt | BoolValue
 
+local MenuObjectClasses = { 'GuiObject', 'LayerCollector', 'ProximityPrompt', 'BoolValue' }
+
 local function noop() end
 
 local function setGuiObject(object: GuiObject, state: boolean)
@@ -47,4 +49,5 @@ end
 
 return {
     getSetStateFn = getSetStateFn,
+    MenuObjectClasses = MenuObjectClasses,
 }
