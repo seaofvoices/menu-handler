@@ -86,7 +86,7 @@ This module defines a series of [tag-effects](https://github.com/seaofvoices/tag
 
 ### `MenuInstance` or `MenuExtension`
 
-_Allowed instance class: [`GuiObject`](https://robloxapi.github.io/ref/class/GuiObject.html), [`LayerCollector`](https://robloxapi.github.io/ref/class/LayerCollector.html), [`ProximityPrompt`](https://robloxapi.github.io/ref/class/ProximityPrompt.html)_
+_Allowed instance class: [`GuiObject`](https://robloxapi.github.io/ref/class/GuiObject.html), [`LayerCollector`](https://robloxapi.github.io/ref/class/LayerCollector.html), [`ProximityPrompt`](https://robloxapi.github.io/ref/class/ProximityPrompt.html), [`BoolValue`](https://robloxapi.github.io/ref/class/BoolValue.html)_
 
 Those two tag-effects are used to define a new menu with the given `id`. The difference between a `MenuInstance` and a `MenuExtension` is how they influence other menus:
 
