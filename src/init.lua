@@ -93,7 +93,7 @@ return function()
                 id = 'string',
                 defaultState = 'boolean?',
             })
-            :withValidClass('GuiObject', 'LayerCollector', 'ProximityPrompt')
+            :withValidClass(unpack(MenuObject.MenuObjectClasses))
 
         local function menuInstanceEffect(
             object: MenuObject,
