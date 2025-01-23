@@ -22,7 +22,18 @@ Or if you are using `npm`:
 npm install @crosswalk-game/menu-handler
 ```
 
-## API
+## Content
+
+- [open](#openmenuid-string)
+- [push](#pushmenuid-string)
+- [back](#back)
+- [close](#closemenuid-string)
+- [toggle](#togglemenuid-string)
+- [whileOpened](#whileopenedmenuid-string-effect----teardown----)
+
+- [Tag effects](#tag-effects)
+  - [MenuInstance of MenuExtension](#menuinstance-or-menuextension)
+  - [Menu Navigation](#menu-navigation)
 
 ### `open(menuId: string)`
 
@@ -30,6 +41,19 @@ npm install @crosswalk-game/menu-handler
 
 - **Parameters**:
   - `menuId`: The unique identifier of the menu to open.
+
+### `push(menuId: string)`
+
+- **Description**: Similar to the `open` function: it opens the menu with the specified ID and closes any menu that are not explicitly marked as compatible with the ID.
+
+Additionally, it saves the current menu state into the history stack before opening the new one. Calling [`back`](#back) will return to that state.
+
+- **Parameters**:
+  - `menuId`: The unique identifier of the menu to open.
+
+### `back()`
+
+- **Description**: Go back to the previous menu state from the history stack. State is added in the history stack when calling [`push`](#pushmenuid-string).
 
 ### `close(menuId: string)`
 
@@ -79,7 +103,9 @@ _Optional:_
 
 Optionally, the `MenuInstance` tag effect can also be configured to mark other menus as compatible with itself, by adding string attributes set to other compatible menu `id`. For example, one could add an attribute `compatibleWithStore = "Store"`, where `Store` would be another `MenuInstance` `id`.
 
-### `OpenMenu`, `CloseMenu` or `ToggleMenu`
+### Menu Navigation
+
+There are various tags to navigate through menus: `OpenMenu`, `PushMenu`, `BackMenu`, `CloseMenu` and `ToggleMenu`.
 
 These tag-effects can be used bind a signal to open, close or toggle a menu. They can be applied to any kind of instances:
 
@@ -89,7 +115,7 @@ These tag-effects can be used bind a signal to open, close or toggle a menu. The
 - Any other instance, if the `eventName` attribute is set to an appropriate event name
 
 __Configuration:__
-- `id` (string): identifier of the menu that needs to be opened
+- `id` (string): identifier of the menu that needs to be opened/pushed/closed/toggled. (**excepted** for `BackMenu`, this field is required)
 
 _Optional:_
 - `eventName` (string): specify which signal to use to bind the behavior

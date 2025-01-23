@@ -36,8 +36,7 @@ jobs:
         run: yarn run prepare
 
       - name: Run linter
-        # lint only with selene for now since luau-lsp can't ignore issue in luau-polyfill
-        run: yarn run lint:selene
+        run: yarn run lint
 
       - name: Verify code style
         run: yarn run style-check
