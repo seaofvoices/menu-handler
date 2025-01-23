@@ -1,6 +1,6 @@
 {
   "name": "@crosswalk-game/menu-handler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A crosswalk client module to handle UI menus using tagged instances",
   "license": "MIT",
   "author": "jeparlefrancais <jeparlefrancais21@gmail.com>",
