@@ -1,4 +1,4 @@
-export type MenuObject = GuiObject | LayerCollector | ProximityPrompt
+export type MenuObject = GuiObject | LayerCollector | ProximityPrompt | BoolValue
 
 local function noop() end
 
@@ -12,6 +12,10 @@ end
 
 local function setProximityPrompt(object: ProximityPrompt, state: boolean)
     object.Enabled = state
+end
+
+local function setBoolValue(object: BoolValue, state: boolean)
+    object.Value = state
 end
 
 local cache: { [string]: any } = {}
@@ -30,6 +34,8 @@ local function getSetStateFn(object: MenuObject): (any, boolean) -> ()
         result = setScreenGui
     elseif object:IsA('ProximityPrompt') then
         result = setProximityPrompt
+    elseif object:IsA('BoolValue') then
+        result = setBoolValue
     else
         warn(`unsupported menu extension of class '{className}'`)
         result = noop
